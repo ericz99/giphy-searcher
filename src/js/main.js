@@ -10,7 +10,7 @@
  */
 
 // predefined vars
-const API_KEY = "";
+const API_KEY = ""; // <======= INSERT YOUR API_KEY FROM YOUR https://developers.giphy.com/dashboard/
 const BASE_URL = "//api.giphy.com/v1/gifs";
 const SEARCH_ENDPOINT = "search";
 const LIMIT = "1";
@@ -23,6 +23,10 @@ const resultElem = document.querySelector(".flex-container");
 const btnGroup = document.querySelector(".btnGroup");
 const nextElem = document.querySelector("#nextBtn");
 const saveElem = document.querySelector("#saveBtn");
+const galleryBtnElem = document.querySelector("#gallery");
+const searchBtnElem = document.querySelector("#search");
+const galleryElem = document.querySelector(".gallery");
+const mainContentElem = document.querySelector("#main-content");
 
 let storage;
 let uniq;
@@ -49,7 +53,7 @@ queryElem.addEventListener("keyup", e => {
     giphyAPI
       .search()
       .then(res => {
-        const data = res.data[0].images.downsized_large.url;
+        const data = res.data[0].images.fixed_height.url;
 
         console.log(res);
 
@@ -65,13 +69,15 @@ queryElem.addEventListener("keyup", e => {
 nextElem.addEventListener("click", e => {
   e.preventDefault();
   if (e.target && resultElem.childNodes.length !== 0) {
+    // change offset value everytime we click next
+
     giphyAPI.offset = Math.floor(Math.random() * 25);
 
     // make another request
     giphyAPI
       .search()
       .then(res => {
-        const data = res.data[0].images.downsized_large.url;
+        const data = res.data[0].images.fixed_height.url;
 
         // display picture now
         resultElem.innerHTML = `<div><img src=${data} alt="giphyapi" /></div>`;
@@ -110,5 +116,51 @@ saveElem.addEventListener("click", e => {
     window.alert("stored image");
   } else {
     window.alert("no image, please search for an image");
+  }
+});
+
+galleryBtnElem.addEventListener("click", e => {
+  e.preventDefault();
+
+  if (e.target) {
+    // set this nav active
+    galleryBtnElem.classList.add("active");
+    // unset this the other nav to nothing
+    searchBtnElem.classList.remove("active");
+    // display none on the main-content
+    mainContentElem.style.display = "none";
+    // set gallery container = block;
+    galleryElem.style.display = "flex";
+
+    if (localStorage.getItem("images") === null) {
+      storage = [];
+    } else {
+      storage = JSON.parse(localStorage.getItem("images"));
+    }
+
+    let output;
+
+    storage.forEach(image => {
+      output += `<div>
+        <img src=${image} alt="blank_image" />
+      </div>`;
+    });
+
+    galleryElem.innerHTML = output;
+  }
+});
+
+searchBtnElem.addEventListener("click", e => {
+  e.preventDefault();
+
+  if (e.target) {
+    // set this nav active
+    galleryBtnElem.classList.remove("active");
+    // unset this the other nav to nothing
+    searchBtnElem.classList.add("active");
+    // display none on the main-content
+    mainContentElem.style.display = "block";
+    // set gallery container = block;
+    galleryElem.style.display = "none";
   }
 });

@@ -26,6 +26,7 @@ body {
     #240b36,
     #c31432
   ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  overflow-x: hidden;
 }
 html {
   font-family: "Montserrat", sans-serif;
@@ -113,12 +114,38 @@ button {
   text-align: right;
 }
 .nav > span {
-  font-size: 18px;
+  font-size: 16px;
   color: #fff;
   letter-spacing: 2px;
   text-transform: uppercase;
   font-weight: 600;
   cursor: pointer;
+  padding: 0 15px;
 }
 .nav > span:hover {
+}
+.nav .active {
+  color: #2196f3;
+}
+.gallery {
+  padding: 0.5vw;
+  font-size: 0;
+  display: -ms-flexbox;
+  -ms-flex-wrap: wrap;
+  -ms-flex-direction: column;
+  -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
+  display: -webkit-box;
+  display: flex;
+}
+.gallery > div {
+  -webkit-box-flex: auto;
+  -ms-flex: auto;
+  flex: auto;
+  width: 200px;
+  margin: 0.5vw;
+}
+.gallery div img {
+  width: 100%;
+  height: auto;
 }

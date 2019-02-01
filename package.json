@@ -1,0 +1,26 @@
+{
+  "name": "giphy-searcher",
+  "version": "1.0.0",
+  "description": "Giphy Searcher Application - Allow user to search their gifs ",
+  "private": true,
+  "scripts": {
+    "watch": "webpack --watch",
+    "dev": "webpack-dev-server src/app.js dist/bundle.min.js",
+    "build": "webpack --mode development"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "clean-webpack-plugin": "^1.0.0",
+    "css-loader": "^2.1.0",
+    "file-loader": "^3.0.1",
+    "style-loader": "^0.23.1",
+    "url-loader": "^1.1.2",
+    "webpack": "^4.29.0",
+    "webpack-cli": "^3.2.1",
+    "webpack-dev-server": "^3.1.14"
+  },
+  "dependencies": {
+    "jquery": "^3.3.1"
+  }
+}

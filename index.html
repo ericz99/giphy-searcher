@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Giphy Searcher</title>
+  </head>
+  <body>
+    <!-- MAIN WRAPPER -->
+    <div class="wrapper">
+      <!-- MAIN CONTAINER -->
+      <div class="container">
+        <div class="nav"><span id="gallery">Gallery</span></div>
+        <div class="row">
+          <div class="col">
+            <h1>Giphy API Search</h1>
+            <input
+              type="text"
+              class="query"
+              placeholder="Enter any keywords"
+              value=""
+            />
+          </div>
+
+          <div class="flex-container"></div>
+          <!-- Button Group -->
+          <div class="btnGroup">
+            <button type="submit" id="saveBtn">Save</button>
+            <button type="submit" id="nextBtn">Next</button>
+          </div>
+        </div>
+        <div class="gallery"></div>
+      </div>
+    </div>
+
+    <script src="./dist/bundle.min.js"></script>
+  </body>
+</html>

@@ -10,7 +10,7 @@
  */
 
 // predefined vars
-const API_KEY = ""; // <======= INSERT YOUR API_KEY FROM YOUR https://developers.giphy.com/dashboard/
+const API_KEY = "mOALXCqjcvItEYM5NLEYjJNvw1GuwRGL"; // <======= INSERT YOUR API_KEY FROM YOUR https://developers.giphy.com/dashboard/
 const BASE_URL = "//api.giphy.com/v1/gifs";
 const SEARCH_ENDPOINT = "search";
 const LIMIT = "1";
@@ -158,9 +158,9 @@ searchBtnElem.addEventListener("click", e => {
     galleryBtnElem.classList.remove("active");
     // unset this the other nav to nothing
     searchBtnElem.classList.add("active");
-    // display none on the main-content
+    // display block on the main-content
     mainContentElem.style.display = "block";
-    // set gallery container = block;
+    // set gallery container = none;
     galleryElem.style.display = "none";
   }
 });

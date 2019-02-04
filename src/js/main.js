@@ -80,7 +80,7 @@ nextElem.addEventListener("click", e => {
         const data = res.data[0].images.fixed_height.url;
 
         // display picture now
-        resultElem.innerHTML = `<div><img src=${data} alt="giphyapi" /></div>`;
+        resultElem.innerHTML = `<div><img src=${data} alt="giphyapi" lazyload="on" /></div>`;
       })
       .catch(err => {
         console.log(err);

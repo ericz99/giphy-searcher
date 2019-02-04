@@ -9,6 +9,7 @@ Giphy Searcher Application - Allow user to search their gifs
 - Able to construct my own webpack file
 - Learned how to bundle + minified all codes into one file
 - Learned how to make an AJAX Request (w/ Restful API access)
+- Understand how localstorage works in the browser
 
 # How to start?
 

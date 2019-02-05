@@ -4,6 +4,8 @@
   "description": "Giphy Searcher Application - Allow user to search their gifs ",
   "private": true,
   "scripts": {
+    "start": "node server.js",
+    "heroku-postbuild": "webpack -p",
     "watch": "webpack --watch",
     "dev": "webpack-dev-server --history-api-fallback --inline --progress",
     "build": "webpack --mode development"

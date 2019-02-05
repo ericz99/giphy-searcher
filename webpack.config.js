@@ -1,16 +1,21 @@
-const path = require("path");
+const { join, resolve } = require("path");
 const CleanWebpackPlugin = require("clean-webpack-plugin");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const CopyWebpackPlugin = require("copy-webpack-plugin");
+const UglifyJSPlugin = require("uglifyjs-webpack-plugin");
 
-module.exports = {
+const ENV = process.env.APP_ENV;
+const isProd = ENV === "prod";
+
+const config = {
   mode: "development",
   entry: "./src/app.js",
   plugins: [new CleanWebpackPlugin(["dist"])],
   output: {
-    path: path.resolve(__dirname, "dist"),
-    filename: "bundle.min.js"
-  },
-  devServer: {
-    contentBase: path.join(__dirname, "dist")
+    path: __dirname + "/dist",
+    filename: "bundle.min.js",
+    publicPath: "/",
+    pathinfo: true
   },
   module: {
     rules: [
@@ -25,11 +30,25 @@ module.exports = {
       {
         test: /\.(svg|gif|png|eot|woff|ttf)$/,
         use: ["url-loader"]
-      },
-      {
-        test: /\.(woff|woff2|eot|ttf|otf)$/,
-        use: ["file-loader"]
       }
     ]
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: resolve(__dirname, "src/public", "index.html"),
+      inject: "body"
+    }),
+    new UglifyJSPlugin(),
+    new CopyWebpackPlugin([
+      {
+        from: __dirname + "/src/public"
+      }
+    ])
+  ],
+  devServer: {
+    contentBase: "./src/public",
+    port: 8080
   }
 };
+
+module.exports = config;

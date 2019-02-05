@@ -1,5 +1,5 @@
 // IMPORT CSS
-import "../assets/css/style.css";
+import "./style/style.css";
 
 // IMPORT JAVASCRIPT
 window.jQuery = window.$ = require("jquery");

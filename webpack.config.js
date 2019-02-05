@@ -2,18 +2,14 @@ const { join, resolve } = require("path");
 const CleanWebpackPlugin = require("clean-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
-const UglifyJSPlugin = require("uglifyjs-webpack-plugin");
 
-const ENV = process.env.APP_ENV;
-const isProd = ENV === "prod";
-
-const config = {
-  mode: "development",
+module.exports = {
+  mode: "production",
   entry: "./src/app.js",
   plugins: [new CleanWebpackPlugin(["dist"])],
   output: {
     path: __dirname + "/dist",
-    filename: "bundle.min.js",
+    filename: "bundle.js",
     publicPath: "/",
     pathinfo: true
   },
@@ -38,7 +34,6 @@ const config = {
       template: resolve(__dirname, "src/public", "index.html"),
       inject: "body"
     }),
-    new UglifyJSPlugin(),
     new CopyWebpackPlugin([
       {
         from: __dirname + "/src/public"
@@ -50,5 +45,3 @@ const config = {
     port: 8080
   }
 };
-
-module.exports = config;

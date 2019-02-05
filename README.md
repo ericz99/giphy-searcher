@@ -16,3 +16,7 @@ Giphy Searcher Application - Allow user to search their gifs
 - First NPM install to install all packages
 - Run following command in your CLI => npm run watch => then open your live server
 - Then edit the following line on main.js :: line 13 => input your API_KEY => then it should work perfectly
+
+# Finish Product
+
+- https://giphy-searcher-app.herokuapp.com/
